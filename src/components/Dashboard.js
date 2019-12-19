@@ -3,7 +3,7 @@ import React from "react";
 const Dashboard = props => {
   return (
     <div>
-      <h2>Add Form</h2>
+      <h2>Dashboard</h2>
     </div>
   );
 };
