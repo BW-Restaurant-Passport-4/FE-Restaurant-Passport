@@ -1,5 +1,5 @@
 import React from "react";
-import { withFormik, Form, Field } from "formik"
+import { withFormik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -33,7 +33,9 @@ const Register = props => {
           <Field type="text" name="city" placeholder="Enter Your City" />
         </label>
         <button type="submit">Submit</button>
-        <p>Already have an account? <Link to="/login">Login</Link></p>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </Form>
     </div>
   );
@@ -51,7 +53,8 @@ const RegisterForm = withFormik({
     };
   },
   handleSubmit(values) {
-    console.log("values", values)
+    console.log("values", values);
+
     axiosWithAuth()
       .post("/auth/register", values)
       .then(res => {
@@ -63,6 +66,6 @@ const RegisterForm = withFormik({
         console.log("error registering: ", err);
       });
   }
-})(Register)
+})(Register);
 
 export default RegisterForm;
