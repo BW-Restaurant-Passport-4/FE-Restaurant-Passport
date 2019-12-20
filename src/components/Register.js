@@ -41,7 +41,8 @@ const Register = props => {
 const RegisterForm = withFormik({
   mapPropsToValues(props) {
     return {
-      name: props.name || "",
+      first_name: props.first_name || "",
+      last_name: props.last_name || "",
       username: props.username || "",
       email: props.email || "",
       password: props.password || "",
