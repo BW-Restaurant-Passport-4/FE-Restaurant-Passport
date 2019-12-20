@@ -54,6 +54,7 @@ const RegisterForm = withFormik({
   },
   handleSubmit(values) {
     console.log("values", values);
+
     axiosWithAuth()
       .post("/auth/register", values)
       .then(res => {
