@@ -1,6 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik"
 import { Link } from "react-router-dom";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Register = props => {
   return (
@@ -13,7 +14,7 @@ const Register = props => {
         </label>
         <label>
           Last Name
-          <Field type="text" name="first_name" placeholder="Enter Last Name" />
+          <Field type="text" name="last_name" placeholder="Enter Last Name" />
         </label>
         <label>
           Username
@@ -41,14 +42,26 @@ const Register = props => {
 const RegisterForm = withFormik({
   mapPropsToValues(props) {
     return {
+      username: props.username || "",
+      password: props.password || "",
       first_name: props.first_name || "",
       last_name: props.last_name || "",
-      username: props.username || "",
-      email: props.email || "",
-      password: props.password || "",
-      city: props.city || ""
+      city: props.city || "",
+      email: props.email || ""
     };
-
+  },
+  handleSubmit(values) {
+    console.log("values", values)
+    axiosWithAuth()
+      .post("/auth/register", values)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+        //props.history.push("/login");
+      })
+      .catch(err => {
+        console.log("error registering: ", err);
+      });
   }
 })(Register)
 
