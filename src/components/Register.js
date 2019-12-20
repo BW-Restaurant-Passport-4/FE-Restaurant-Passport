@@ -8,8 +8,12 @@ const Register = props => {
       <h2>Register</h2>
       <Form>
         <label>
-          Name
-          <Field type="text" name="name" placeholder="Enter Name" />
+          First Name
+          <Field type="text" name="first_name" placeholder="Enter First Name" />
+        </label>
+        <label>
+          Last Name
+          <Field type="text" name="first_name" placeholder="Enter Last Name" />
         </label>
         <label>
           Username
