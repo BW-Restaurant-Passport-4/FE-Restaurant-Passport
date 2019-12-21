@@ -1,7 +1,7 @@
 import React, {useState, useEffects} from "react";
 import {withFormik, Form, Field} from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 const Login = ({values, errors, touched, status}) => {
     console.log("values", values);
@@ -70,18 +70,17 @@ const FormikForm = withFormik({
     // in FormikBag: setStatus (sends API response to AnimalForm) & resetForm (clears form when called)
     handleSubmit(values, { setStatus, resetForm }) {
       console.log("submitting", values);
-      axios
-        .post("https://reqres.in/api/users/", values)
-        .then(res => {
-          console.log("success", res);
-          // sends a status update through props in AnimalForm with value as res.data content
-          setStatus(res.data);
-  
-          //clears form inputs, from FormikBag
-          resetForm();
-        })
-        .catch(err => console.log(err.response));
+      axiosWithAuth()
+      .post("/auth/login", values)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        // props.history.push("/dashboard");
+      })
+      .catch(err => {
+        // setError(err.message);
+        console.log("Error", err)
+      });
     }
-  })(Login);
+  }, [])(Login);
 
 export default FormikForm;
