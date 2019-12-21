@@ -2,8 +2,9 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import * as Yup from "yup";
 
-const Register = props => {
+const Register = ({ values, errors, touched }) => {
   return (
     <div>
       <h2>Register</h2>
@@ -27,6 +28,9 @@ const Register = props => {
         <label>
           Password
           <Field type="text" name="password" placeholder="Enter Password" />
+          {touched.password && errors.password && (
+            <p>{errors.password}</p>
+          )}
         </label>
         <label>
           City
@@ -52,6 +56,9 @@ const RegisterForm = withFormik({
       email: props.email || ""
     };
   },
+  validationSchema: Yup.object().shape({
+    password: Yup.string().required()
+  }),
   handleSubmit(values) {
     console.log("values", values);
 
