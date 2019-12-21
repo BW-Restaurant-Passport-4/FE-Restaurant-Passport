@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withFormik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -27,10 +27,8 @@ const Register = ({ values, errors, touched }) => {
         </label>
         <label>
           Password
-          <Field type="text" name="password" placeholder="Enter Password" />
-          {touched.password && errors.password && (
-            <p>{errors.password}</p>
-          )}
+          <Field type="password" name="password" placeholder="Enter Password" />
+          {touched.password && errors.password && <p>{errors.password}</p>}
         </label>
         <label>
           City
@@ -59,15 +57,14 @@ const RegisterForm = withFormik({
   validationSchema: Yup.object().shape({
     password: Yup.string().required()
   }),
-  handleSubmit(values) {
+  handleSubmit(values, { props }) {
     console.log("values", values);
 
     axiosWithAuth()
       .post("/auth/register", values)
       .then(res => {
         console.log(res);
-        localStorage.setItem("token", res.data.payload);
-        //props.history.push("/login");
+        props.history.push("/login");
       })
       .catch(err => {
         console.log("error registering: ", err);
