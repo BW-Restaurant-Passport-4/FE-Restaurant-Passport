@@ -1,44 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = ({ values, errors, touched, status }) => {
-  // console.log("values", values);
-  // console.log("errors", errors);
-  // console.log("touched", touched);
-
   return (
     <div className="form">
       <Form>
         <label htmlFor="username">
           Username
-        <Field
+          <Field
             id="username"
             type="text"
             name="username"
-            placeholder="username" />
-          {touched.username && errors.username && (<p className="errors">{errors.username}</p>)}
+            placeholder="username"
+          />
+          {touched.username && errors.username && (
+            <p className="errors">{errors.username}</p>
+          )}
         </label>
         <label htmlFor="password">
           Password
-        <Field
+          <Field
             id="password"
             type="password"
             name="password"
-            placeholder="password" />
-          {touched.password && errors.password && (<p className="errors">{errors.password}</p>)}
+            placeholder="password"
+          />
+          {touched.password && errors.password && (
+            <p className="errors">{errors.password}</p>
+          )}
         </label>
         <button type="submit">Submit</button>
       </Form>
     </div>
   );
-}
+};
 const FormikForm = withFormik({
   mapPropsToValues(props) {
     return {
       username: props.username || "",
-      password: props.password || "",
+      password: props.password || ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -56,7 +58,7 @@ const FormikForm = withFormik({
         props.history.push("/dashboard");
       })
       .catch(err => {
-        console.log("Error", err)
+        console.log("Error", err);
       });
   }
 })(Login);
