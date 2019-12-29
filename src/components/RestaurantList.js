@@ -4,14 +4,10 @@ import RestaurantCard from "./RestaurantCard";
 const RestaurantList = props => {
   return (
     <div>
-      {
-        props.restaurants.map(res => (
-          <RestaurantCard key={res.id} res={res} />
-        )
-        )
-      }
+      {props.restaurants.map(res => (
+        <RestaurantCard key={res.id} restaurant={res} />
+      ))}
     </div>
-
   );
 };
 
