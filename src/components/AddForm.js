@@ -72,8 +72,7 @@ const AddForm = props => {
     } else {
       axiosWithAuth()
         .post("/restaurants", formData)
-        .then(res => {
-          console.log(res.data);
+        .then(() => {
           setIsLoading(false);
           setFormData(initialFormState);
           props.history.push("/dashboard");
@@ -95,7 +94,11 @@ const AddForm = props => {
   } else {
     return (
       <div className="addFormContainer">
-        <h2>Add or Edit a Passport Entry</h2>
+        {isEditing ? (
+          <h2>Edit a Passport Entry</h2>
+        ) : (
+          <h2>Add a Passport Entry</h2>
+        )}
         <form className="addForm" onSubmit={handleSubmit}>
           <div className="formColumn">
             <label htmlFor="addFormName">Name</label>
