@@ -1,28 +1,24 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { passportContext } from "../contexts/passportContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { userContext } from "../contexts/userContext";
 import RestaurantList from "./RestaurantList";
 
-const Dashboard = props => {
+const Dashboard = () => {
   const { restaurantList, setRestaurantList } = useContext(passportContext);
-  const { user } = useContext(userContext);
+  const [username] = useState(localStorage.getItem("username"));
 
   useEffect(() => {
     axiosWithAuth()
       .get("/restaurants")
       .then(res => {
-        console.log(res);
         setRestaurantList(res.data);
       })
       .catch(err => console.log("Error fetching: ", err));
-  }, []);
+  }, [setRestaurantList]);
 
   return (
     <div>
-      <h2>Dashboard</h2>
-      <h3>{user}</h3>
-
+      <h3>{username}</h3>
       <RestaurantList restaurants={restaurantList} />
     </div>
   );

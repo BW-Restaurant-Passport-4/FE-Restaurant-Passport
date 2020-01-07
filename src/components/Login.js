@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -53,8 +53,8 @@ const FormikForm = withFormik({
     axiosWithAuth()
       .post("/auth/login", values)
       .then(res => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.message);
         props.history.push("/dashboard");
       })
       .catch(err => {
