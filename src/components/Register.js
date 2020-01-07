@@ -62,8 +62,7 @@ const RegisterForm = withFormik({
 
     axiosWithAuth()
       .post("/auth/register", values)
-      .then(res => {
-        console.log(res);
+      .then(() => {
         props.history.push("/login");
       })
       .catch(err => {
