@@ -2,14 +2,93 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import styled from "styled-components";
+
+const LoginForm = styled.div`
+.form {
+  background-color: #E5E5E5;
+}
+
+.field1 {
+//position: absolute;
+ width: 194px;
+ height: 44px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.field2 {
+//position: absolute;
+ width: 194px;
+height: 44px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.usr {
+  position: absolute;
+  width: 175px;
+  height: 49px;
+  left: 632px;
+  top: 361px;
+  
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 49px;
+  /* identical to box height */
+  
+  text-align: center;
+  
+  color: #FFFFFF;
+  
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.pw {
+  position: absolute;
+  width: 163px;
+  height: 49px;
+  left: 638px;
+  top: 525px;
+  
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 49px;
+  /* identical to box height */
+  
+  text-align: center;
+  
+  color: #FFFFFF;
+  
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn3 {
+  position: absolute;
+width: 316px;
+height: 92px;
+left: 562px;
+top: 696px;
+
+background: #311D3F;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+`
 
 const Login = ({ values, errors, touched, status }) => {
   return (
-    <div className="form">
-      <Form>
-        <label htmlFor="username">
+    <LoginForm className="form">
+      <Form >
+        <label className="usr" htmlFor="username">
           Username
-          <Field
+          <Field className="field1"
             id="username"
             type="text"
             name="username"
@@ -19,9 +98,9 @@ const Login = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.username}</p>
           )}
         </label>
-        <label htmlFor="password">
+        <label className="pw" htmlFor="password">
           Password
-          <Field
+          <Field className="field2"
             id="password"
             type="password"
             name="password"
@@ -31,9 +110,9 @@ const Login = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.password}</p>
           )}
         </label>
-        <button type="submit">Submit</button>
+        <button className="btn3" type="submit">Login</button>
       </Form>
-    </div>
+    </LoginForm>
   );
 };
 const FormikForm = withFormik({
