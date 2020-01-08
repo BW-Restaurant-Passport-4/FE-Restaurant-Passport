@@ -198,7 +198,7 @@ const AddForm = props => {
             required
           />
 
-          <div className="stamped">
+          <div className="stampedForm">
             <label htmlFor="addFormStamped">Have You Eaten here?</label>
             <input
               type="checkbox"

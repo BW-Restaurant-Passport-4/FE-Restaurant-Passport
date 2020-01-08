@@ -65,7 +65,7 @@ html {
   text-align: left;
   font-weight: bold;
   margin-bottom: 3px;
-  font-size: 1.6rem;
+  font-size: 2rem;
   display: block;
 }
 
@@ -74,13 +74,37 @@ html {
   margin-bottom: 10px;
   padding: 15px 20px;
   outline: none;
+  margin-bottom: 15px;
 }
 
-.addFormContainer form .stamped {
+.addFormContainer form .formRow {
   display: flex;
   align-items: center;
-  margin-left: 120px;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.addFormContainer form .stampedForm {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  margin-left: 50px;
+  margin-bottom: 16px;
+}
+
+.addFormContainer form .stampedForm label {
+  text-align: center;
+}
+
+.addFormContainer form .stampedForm input {
+  padding: 5px;
+}
+
+.addFormContainer form .formBtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 60px;
 }
 
 .addFormContainer form .formBtns button {
@@ -90,8 +114,6 @@ html {
   font-size: 2rem;
   padding: 10px 20px;
   margin-right: 15px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .addFormContainer form .formBtns button:hover {
