@@ -2,15 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Welcome = styled.div`
- .welcome {
-  position: absolute;
-  width: 1440px;
-  height: 1018px;
-  left: 0px;
-  top: 6px;
-  
-  background-image: url("src/restaurant.jpg");
- }
+background: #88304E;
 
 h2 {
   position: absolute;
@@ -36,7 +28,7 @@ height: 84px;
 left: 473px;
 top: 434px;
 
-background: #311D3F;
+background: #522546;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 position: absolute;
 // width: 143px;
@@ -61,7 +53,7 @@ height: 84px;
 left: 473px;
 top: 586px;
 
-background: #311D3F;
+background: #522546;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 position: absolute;
 // width: 212px;

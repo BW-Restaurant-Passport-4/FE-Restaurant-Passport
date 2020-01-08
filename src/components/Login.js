@@ -3,35 +3,37 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import LoginHeader from "./LoginHeader";
 
-const LoginForm = styled.div`
-.form {
-  background-color: #E5E5E5;
-}
+
+ const LoginForm = styled.div`
 
 .field1 {
-//position: absolute;
- width: 194px;
+  position: absolute;
+ width: 494px;
  height: 44px;
-
+ left: -150px;
+ top: 50px;
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .field2 {
-//position: absolute;
- width: 194px;
+  position: absolute;
+width: 494px;
 height: 44px;
-
+left: -150px;
+top: 50px;
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .usr {
   position: absolute;
   width: 175px;
   height: 49px;
   left: 632px;
-  top: 361px;
+  top: 161px;
   
   font-family: Open Sans;
   font-style: normal;
@@ -42,9 +44,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   
   text-align: center;
   
-  color: #FFFFFF;
+  color: #522546;
   
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
 }
 
 .pw {
@@ -52,7 +54,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 163px;
   height: 49px;
   left: 638px;
-  top: 525px;
+  top: 425px;
   
   font-family: Open Sans;
   font-style: normal;
@@ -63,7 +65,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   
   text-align: center;
   
-  color: #FFFFFF;
+  color: #522546;
   
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -74,19 +76,23 @@ width: 316px;
 height: 92px;
 left: 562px;
 top: 696px;
-
-background: #311D3F;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+background: #522546;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 20px;
 }
-
 `
+
+
 
 const Login = ({ values, errors, touched, status }) => {
   return (
-    <LoginForm className="form">
-      <Form >
-        <label className="usr" htmlFor="username">
+   <LoginForm>    
+     <LoginHeader />
+      <Form>
+         <label className="usr" htmlFor="username">
           Username
           <Field className="field1"
             id="username"
@@ -111,11 +117,13 @@ const Login = ({ values, errors, touched, status }) => {
           )}
         </label>
         <button className="btn3" type="submit">Login</button>
-      </Form>
+        </Form>
+       
     </LoginForm>
   );
 };
 const FormikForm = withFormik({
+  
   mapPropsToValues(props) {
     return {
       username: props.username || "",
@@ -123,8 +131,8 @@ const FormikForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("USERNAME IS MANDATORY"),
-    password: Yup.string().required("PASSWORD IS MANDATORY")
+    username: Yup.string().required("username is mandatory"),
+    password: Yup.string().required("password is mandatory")
   }),
 
   handleSubmit(values, { props, setStatus, resetForm }) {
@@ -140,6 +148,8 @@ const FormikForm = withFormik({
         console.log("Error", err);
       });
   }
-})(Login);
+  
+ 
+}) (Login);
 
-export default FormikForm;
+export default (FormikForm);
