@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import { passportContext } from "../contexts/passportContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import AddFormHeader from "./AddFormHeader";
 
 const initialFormState = {
   restaurant_name: "",
@@ -94,89 +95,79 @@ const AddForm = props => {
   } else {
     return (
       <div className="addFormContainer">
+        <AddFormHeader />
         {isEditing ? (
           <h2>Edit a Passport Entry</h2>
         ) : (
           <h2>Add a Passport Entry</h2>
         )}
-        <form className="addForm" onSubmit={handleSubmit}>
-          <div className="formColumn">
-            <label htmlFor="addFormName">Name</label>
-            <input
-              type="text"
-              name="restaurant_name"
-              id="addFormName"
-              onChange={handleChange}
-              value={formData.restaurant_name}
-              placeholder="name"
-              required
-            />
-          </div>
 
-          <div className="formColumn">
-            <label htmlFor="addFormAddress">Address</label>
-            <input
-              type="text"
-              name="restaurant_address"
-              id="addFormAddress"
-              onChange={handleChange}
-              value={formData.restaurant_address}
-              placeholder="address"
-              required
-            />
-          </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="addFormName">Name</label>
+          <input
+            type="text"
+            name="restaurant_name"
+            id="addFormName"
+            onChange={handleChange}
+            value={formData.restaurant_name}
+            placeholder="name"
+            required
+          />
 
-          <div className="formColumn">
-            <label htmlFor="addFormCity">City</label>
-            <input
-              type="text"
-              name="restaurant_city"
-              id="addFormCity"
-              onChange={handleChange}
-              value={formData.restaurant_city}
-              placeholder="city"
-              required
-            />
-          </div>
+          <label htmlFor="addFormAddress">Address</label>
+          <input
+            type="text"
+            name="restaurant_address"
+            id="addFormAddress"
+            onChange={handleChange}
+            value={formData.restaurant_address}
+            placeholder="address"
+            required
+          />
 
-          <div className="formColumn">
-            <label htmlFor="addFormZip">Zip Code</label>
-            <input
-              type="text"
-              name="restaurant_zip"
-              id="addFormZip"
-              onChange={handleChange}
-              value={formData.restaurant_zip}
-              placeholder="zip code"
-              required
-            />
-          </div>
+          <label htmlFor="addFormCity">City</label>
+          <input
+            type="text"
+            name="restaurant_city"
+            id="addFormCity"
+            onChange={handleChange}
+            value={formData.restaurant_city}
+            placeholder="city"
+            required
+          />
 
-          <div className="formColumn">
-            <label htmlFor="addFormPhone">Phone #</label>
-            <input
-              type="tel"
-              name="restaurant_phone_number"
-              id="addFormPhone"
-              onChange={handleChange}
-              value={formData.restaurant_phone_number}
-              placeholder="phone number"
-              required
-            />
-          </div>
+          <label htmlFor="addFormZip">Zip Code</label>
+          <input
+            type="text"
+            name="restaurant_zip"
+            id="addFormZip"
+            onChange={handleChange}
+            value={formData.restaurant_zip}
+            placeholder="zip code"
+            required
+          />
 
-          <div className="formColumn">
-            <label htmlFor="addFormWebsite">Website</label>
-            <input
-              type="text"
-              name="restaurant_website"
-              id="addFormWebsite"
-              onChange={handleChange}
-              value={formData.restaurant_website}
-              placeholder="url"
-              required
-            />
-          </div>
+          <label htmlFor="addFormPhone">Phone #</label>
+          <input
+            type="tel"
+            name="restaurant_phone_number"
+            id="addFormPhone"
+            onChange={handleChange}
+            value={formData.restaurant_phone_number}
+            placeholder="phone number"
+            required
+          />
+
+          <label htmlFor="addFormWebsite">Website</label>
+          <input
+            type="text"
+            name="restaurant_website"
+            id="addFormWebsite"
+            onChange={handleChange}
+            value={formData.restaurant_website}
+            placeholder="url"
+            required
+          />
 
           <div className="formRow">
             <label htmlFor="addFormRating">Your Rating</label>
@@ -196,20 +187,18 @@ const AddForm = props => {
             </select>
           </div>
 
-          <div className="formColumn">
-            <label htmlFor="addFormNotes">Notes</label>
-            <input
-              type="textarea"
-              name="restaurant_notes"
-              id="addFormNotes"
-              onChange={handleChange}
-              value={formData.restaurant_notes}
-              placeholder="notes"
-              required
-            />
-          </div>
+          <label htmlFor="addFormNotes">Notes</label>
+          <input
+            type="textarea"
+            name="restaurant_notes"
+            id="addFormNotes"
+            onChange={handleChange}
+            value={formData.restaurant_notes}
+            placeholder="notes"
+            required
+          />
 
-          <div className="formRow">
+          <div className="stampedForm">
             <label htmlFor="addFormStamped">Have You Eaten here?</label>
             <input
               type="checkbox"
