@@ -2,10 +2,20 @@ import React, { useEffect, useContext, useState } from "react";
 import { passportContext } from "../contexts/passportContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import RestaurantList from "./RestaurantList";
+import { withRouter } from "react-router-dom";
+import DashboardHeader from "./DashboardHeader";
+import styled from "styled-components";
 
-const Dashboard = () => {
+const Container = styled.div`
+  background: #311D3F;
+  color: white;
+`
+
+const Dashboard = (props) => {
   const { restaurantList, setRestaurantList } = useContext(passportContext);
   const [username] = useState(localStorage.getItem("username"));
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
     axiosWithAuth()
@@ -16,12 +26,19 @@ const Dashboard = () => {
       .catch(err => console.log("Error fetching: ", err));
   }, [setRestaurantList]);
 
+  useEffect(() => {
+    setSearchResults(restaurantList.filter(res => {
+      return res.restaurant_name.toLowerCase().includes(searchTerm.toLowerCase());
+    }))
+  }, [searchTerm, restaurantList]);
+
   return (
-    <div>
+    <Container>
+      <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <h3>{username}</h3>
-      <RestaurantList restaurants={restaurantList} />
-    </div>
+      <RestaurantList restaurants={restaurantList} searchResults={searchResults} />
+    </Container>
   );
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);

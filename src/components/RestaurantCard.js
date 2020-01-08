@@ -3,6 +3,18 @@ import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { passportContext } from "../contexts/passportContext";
 import Emoji from "./Emoji";
+import styled from "styled-components";
+
+const Card = styled.div`
+  background: #88304E;
+  width: 30%;
+  margin: 10px auto;
+`
+
+
+
+
+
 
 const RestaurantCard = props => {
   const { setIsEditing, setItemToEdit, setRestaurantList } = useContext(
@@ -46,7 +58,7 @@ const RestaurantCard = props => {
   };
 
   return (
-    <div>
+    <Card>
       <h2>{props.restaurant.restaurant_name}</h2>
       <div className="ratingsDiv">
         {displayRating().map(() => {
@@ -66,7 +78,7 @@ const RestaurantCard = props => {
       <p>{props.restaurant.restaurant_notes}</p>
       <button onClick={deleteRestaurant}>Delete</button>
       <button onClick={handleEdit}>Edit</button>
-    </div>
+    </Card>
   );
 };
 
