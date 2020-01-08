@@ -1,3 +1,99 @@
+html {
+  font-size: 62.5%;
+}
+
 .App {
   text-align: center;
+}
+
+/* addFormHeader styles */
+.addFormHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background: #88304e;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 85px;
+  width: 100vw;
+}
+
+.addFormHeader h2 {
+  font-size: 4.2rem;
+  margin-left: 15px;
+}
+
+.addFormHeader button {
+  background: #522546;
+  color: white;
+  font-size: 2rem;
+  border-radius: 20px;
+  padding: 10px 40px;
+  margin-right: 20px;
+  border: none;
+}
+
+.addFormHeader button:hover {
+  opacity: 0.7;
+}
+
+/* add form styles*/
+.addFormContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  background: #311d3f;
+  color: white;
+}
+
+.addFormContainer h2 {
+  font-size: 3.2rem;
+}
+
+.addFormContainer form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.addFormContainer form label {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 1.6rem;
+  display: block;
+}
+
+.addFormContainer form input {
+  width: 400px;
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  outline: none;
+}
+
+.addFormContainer form .stamped {
+  display: flex;
+  align-items: center;
+  margin-left: 120px;
+  justify-content: center;
+}
+
+.addFormContainer form .formBtns button {
+  background: #522546;
+  color: white;
+  border-radius: 10px;
+  font-size: 2rem;
+  padding: 10px 20px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.addFormContainer form .formBtns button:hover {
+  opacity: 0.7;
 }
