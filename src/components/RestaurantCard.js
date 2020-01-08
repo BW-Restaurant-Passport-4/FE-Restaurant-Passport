@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { passportContext } from "../contexts/passportContext";
+import Emoji from "./Emoji";
 
 const RestaurantCard = props => {
   const { setIsEditing, setItemToEdit, setRestaurantList } = useContext(
@@ -35,14 +36,33 @@ const RestaurantCard = props => {
     setItemToEdit(props.restaurant);
     props.history.push("/add_form");
   };
+
+  const displayRating = () => {
+    let result = [];
+    for (let i = 0; i < props.restaurant.restaurant_rating; i++) {
+      result.push(Number([i]));
+    }
+    return result;
+  };
+
   return (
     <div>
       <h2>{props.restaurant.restaurant_name}</h2>
+      <div className="ratingsDiv">
+        {displayRating().map(() => {
+          return (
+            <Emoji
+              label="star"
+              symbol="⭐"
+              key={`${Date.now() * Math.random()}`}
+            />
+          );
+        })}
+      </div>
       <p>{props.restaurant.restaurant_address}</p>
       <p>{props.restaurant.restaurant_city}</p>
       <p>{props.restaurant.restaurant_zip}</p>
       <p>{props.restaurant.restaurant_website}</p>
-      <p>{props.restaurant.restaurant_rating}</p>
       <p>{props.restaurant.restaurant_notes}</p>
       <button onClick={deleteRestaurant}>Delete</button>
       <button onClick={handleEdit}>Edit</button>
