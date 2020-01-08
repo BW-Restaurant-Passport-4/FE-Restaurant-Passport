@@ -2,6 +2,15 @@ import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { passportContext } from "../contexts/passportContext";
+import styled from "styled-components";
+
+const Card = styled.div`
+  background: #88304E;
+  width: 30%;
+  margin: 10px auto;
+`
+
+
 
 const RestaurantCard = props => {
   const { setIsEditing, setItemToEdit, setRestaurantList } = useContext(
@@ -36,7 +45,7 @@ const RestaurantCard = props => {
     props.history.push("/add_form");
   };
   return (
-    <div>
+    <Card>
       <h2>{props.restaurant.restaurant_name}</h2>
       <p>{props.restaurant.restaurant_address}</p>
       <p>{props.restaurant.restaurant_city}</p>
@@ -46,7 +55,7 @@ const RestaurantCard = props => {
       <p>{props.restaurant.restaurant_notes}</p>
       <button onClick={deleteRestaurant}>Delete</button>
       <button onClick={handleEdit}>Edit</button>
-    </div>
+    </Card>
   );
 };
 
