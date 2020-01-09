@@ -3,7 +3,6 @@ import { passportContext } from "../contexts/passportContext";
 import { userContext } from "../contexts/userContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import RestaurantList from "./RestaurantList";
-import { withRouter } from "react-router-dom";
 import DashboardHeader from "./DashboardHeader";
 import styled from "styled-components";
 
@@ -16,7 +15,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Dashboard = props => {
+const Dashboard = () => {
   const { restaurantList, setRestaurantList } = useContext(passportContext);
   const { user, setUser } = useContext(userContext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,7 +28,7 @@ const Dashboard = props => {
     axiosWithAuth()
       .get("/restaurants")
       .then(res => {
-        setRestaurantList(res.data);
+        setRestaurantList(res.data.reverse());
       })
       .catch(err => console.log("Error fetching: ", err));
   }, [setRestaurantList]);
@@ -56,4 +55,4 @@ const Dashboard = props => {
   );
 };
 
-export default withRouter(Dashboard);
+export default Dashboard;
