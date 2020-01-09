@@ -3,89 +3,96 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import LoginHeader from "./LoginHeader";
 
-const LoginForm = styled.div`
-  .form {
-    background-color: #e5e5e5;
-  }
+const Wrapper = styled.div`
+padding-top: 200px;
+height: 100vh;
+background: #88304E;
+`
 
-  .field1 {
-    //position: absolute;
-    width: 194px;
-    height: 44px;
+const Wrapper2 = styled.div`
+background: #522546;
+border-radius: 20px;
+width: 50%;
+margin: 0 auto;
+padding: 30px;
+`
+ const LoginForm = styled.div`
+.field1 {
+display: flex;
+margin: 0 auto;
+width: 494px;
+height: 44px
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.field2 {
+display: flex;
+margin: 0 auto;
+width: 494px;
+height: 44px;
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  .field2 {
-    //position: absolute;
-    width: 194px;
-    height: 44px;
+.usr {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  // width: 175px;
+  // height: 49px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 49px;
+  color: white;
+   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
+}
 
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  .usr {
-    position: absolute;
-    width: 175px;
-    height: 49px;
-    left: 632px;
-    top: 361px;
+.pw {
+  display: flex;
+  
+  flex-direction: column;
+  margin-bottom: 50px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 49px;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 49px;
-    /* identical to box height */
+.btn3 {
+display: flex;
+justify-content: center;
+margin: 0 auto;
+width: 316px;
+height: 92px;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+background: #522546;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+color: white;
+}
+`
 
-    text-align: center;
-
-    color: #ffffff;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  .pw {
-    position: absolute;
-    width: 163px;
-    height: 49px;
-    left: 638px;
-    top: 525px;
-
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 49px;
-    /* identical to box height */
-
-    text-align: center;
-
-    color: #ffffff;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  .btn3 {
-    position: absolute;
-    width: 316px;
-    height: 92px;
-    left: 562px;
-    top: 696px;
-
-    background: #311d3f;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-  }
-`;
 
 const Login = ({ values, errors, touched, status }) => {
   return (
-    <LoginForm className="form">
+   <LoginForm>    
+     <LoginHeader />
+     <Wrapper>
       <Form>
-        <label className="usr" htmlFor="username">
+        <Wrapper2>
+         <label className="usr" htmlFor="username">
           Username
           <Field
             className="field1"
@@ -111,14 +118,15 @@ const Login = ({ values, errors, touched, status }) => {
             <p className="errors">{errors.password}</p>
           )}
         </label>
-        <button className="btn3" type="submit">
-          Login
-        </button>
-      </Form>
+        <button className="btn3" type="submit">Login</button>
+        </Wrapper2>
+        </Form>
+      </Wrapper> 
     </LoginForm>
   );
 };
 const FormikForm = withFormik({
+  
   mapPropsToValues(props) {
     return {
       username: props.username || "",
@@ -126,8 +134,8 @@ const FormikForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("USERNAME IS MANDATORY"),
-    password: Yup.string().required("PASSWORD IS MANDATORY")
+    username: Yup.string().required("username is mandatory"),
+    password: Yup.string().required("password is mandatory")
   }),
 
   handleSubmit(values, { props, setStatus, resetForm }) {
@@ -142,6 +150,8 @@ const FormikForm = withFormik({
         console.log("Error", err);
       });
   }
-})(Login);
+  
+ 
+}) (Login);
 
-export default FormikForm;
+export default (FormikForm);
