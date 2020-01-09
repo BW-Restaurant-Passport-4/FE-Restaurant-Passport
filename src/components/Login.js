@@ -3,130 +3,113 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
-import LoginHeader from "./LoginHeader";
+import LoginHeader from "./LoginHeader"
+import { TextField } from "formik-material-ui";
+import { makeStyles } from '@material-ui/core/styles';;
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: 250,
+    },
+  },
+}));
 
 const Wrapper = styled.div`
-padding-top: 200px;
-height: 100vh;
-background: #88304E;
-`
-
-const Wrapper2 = styled.div`
-background: #522546;
-border-radius: 20px;
-width: 50%;
-margin: 0 auto;
-padding: 30px;
-`
- const LoginForm = styled.div`
-.field1 {
-display: flex;
-margin: 0 auto;
-width: 494px;
-height: 44px
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.field2 {
-display: flex;
-margin: 0 auto;
-width: 494px;
-height: 44px;
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.usr {
+  background: #88304E;
+  color: white;
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-  flex-direction: column;
   margin: 0 auto;
-  // width: 175px;
-  // height: 49px;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 49px;
-  color: white;
-   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
-}
-
-.pw {
-  display: flex;
-  
-  flex-direction: column;
-  margin-bottom: 50px;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 49px;
-  color: white;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.btn3 {
-display: flex;
-justify-content: center;
-margin: 0 auto;
-width: 316px;
-height: 92px;
-font-style: normal;
-font-weight: normal;
-font-size: 36px;
-background: #522546;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 20px;
-color: white;
-}
+  min-height: 803px;
 `
 
+const FormContainer = styled.div`
+  background: #522546;
+  border-radius: 10px;
+  width: 30%;
+  padding: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+  Form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2rem;
+  }
 
-const Login = ({ values, errors, touched, status }) => {
+  label {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  button {
+    background: #311D3F;
+    border: none;
+    border-radius: 10px;
+    color: #FFF;
+    font-size: 2rem;
+    margin-top: 10px;
+    padding: 11px 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+`
+
+const inputStyles = makeStyles(() => ({
+  root: {
+    '& label.Mui-focused': {
+      color: '#FFF',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: "2px solid",
+        borderColor: "#FFF",
+        boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+      },
+      '&:hover fieldset': {
+        borderColor: "#311D3F"
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: "#311D3F",
+      }
+    }
+  }
+}))
+
+const Login = () => {
+  const spacing = useStyles();
+  const input = inputStyles();
   return (
-   <LoginForm>    
-     <LoginHeader />
-     <Wrapper>
-      <Form>
-        <Wrapper2>
-         <label className="usr" htmlFor="username">
-          Username
-          <Field
-            className="field1"
-            id="username"
+    <Wrapper>
+      <LoginHeader />
+      <FormContainer>
+        <Form className={spacing.root}>
+          <h2>Login</h2>
+          <Field className={input.root}
             type="text"
             name="username"
-            placeholder="username"
+            label="Username"
+            variant="outlined"
+            component={TextField}
           />
-          {touched.username && errors.username && (
-            <p className="errors">{errors.username}</p>
-          )}
-        </label>
-        <label className="pw" htmlFor="password">
-          Password
-          <Field
-            className="field2"
-            id="password"
+          <Field className={input.root}
             type="password"
             name="password"
-            placeholder="password"
+            label="Password"
+            variant="outlined"
+            component={TextField}
           />
-          {touched.password && errors.password && (
-            <p className="errors">{errors.password}</p>
-          )}
-        </label>
-        <button className="btn3" type="submit">Login</button>
-        </Wrapper2>
+          <button className="btn3" type="submit">Login</button>
         </Form>
-      </Wrapper> 
-    </LoginForm>
+      </FormContainer>
+    </Wrapper >
   );
 };
 const FormikForm = withFormik({
-  
+
   mapPropsToValues(props) {
     return {
       username: props.username || "",
@@ -150,8 +133,8 @@ const FormikForm = withFormik({
         console.log("Error", err);
       });
   }
-  
- 
-}) (Login);
+
+
+})(Login);
 
 export default (FormikForm);
