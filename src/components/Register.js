@@ -49,7 +49,7 @@ const FormContainer = styled.div`
 
     label {
       color: white;
-      font-size: 15px;
+      font-size: 1.5rem;
     }
 
     button {
@@ -67,7 +67,7 @@ const FormContainer = styled.div`
 const inputStyles = makeStyles(() => ({
   root: {
     '& label.Mui-focused': {
-      color: '#88304E',
+      color: '#FFF',
     },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
