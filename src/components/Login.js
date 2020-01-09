@@ -5,83 +5,82 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 import LoginHeader from "./LoginHeader";
 
+const Wrapper = styled.div`
+padding-top: 200px;
+height: 100vh;
+background: #88304E;
+`
 
+const Wrapper2 = styled.div`
+background: #522546;
+border-radius: 20px;
+width: 50%;
+margin: 0 auto;
+padding: 30px;
+`
  const LoginForm = styled.div`
-
 .field1 {
-  position: absolute;
- width: 494px;
- height: 44px;
- left: -150px;
- top: 50px;
+display: flex;
+margin: 0 auto;
+width: 494px;
+height: 44px
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .field2 {
-  position: absolute;
+display: flex;
+margin: 0 auto;
 width: 494px;
 height: 44px;
-left: -150px;
-top: 50px;
 background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .usr {
-  position: absolute;
-  width: 175px;
-  height: 49px;
-  left: 632px;
-  top: 161px;
-  
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  // width: 175px;
+  // height: 49px;
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
   line-height: 49px;
-  /* identical to box height */
-  
-  text-align: center;
-  
-  color: #522546;
-  
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
+  color: white;
+   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
 }
 
 .pw {
-  position: absolute;
-  width: 163px;
-  height: 49px;
-  left: 638px;
-  top: 425px;
+  display: flex;
   
+  flex-direction: column;
+  margin-bottom: 50px;
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
   line-height: 49px;
-  /* identical to box height */
-  
-  text-align: center;
-  
-  color: #522546;
-  
+  color: white;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .btn3 {
-  position: absolute;
+display: flex;
+justify-content: center;
+margin: 0 auto;
 width: 316px;
 height: 92px;
-left: 562px;
-top: 696px;
 font-style: normal;
 font-weight: normal;
 font-size: 36px;
 background: #522546;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 20px;
+color: white;
 }
 `
 
@@ -91,7 +90,9 @@ const Login = ({ values, errors, touched, status }) => {
   return (
    <LoginForm>    
      <LoginHeader />
+     <Wrapper>
       <Form>
+        <Wrapper2>
          <label className="usr" htmlFor="username">
           Username
           <Field className="field1"
@@ -117,8 +118,9 @@ const Login = ({ values, errors, touched, status }) => {
           )}
         </label>
         <button className="btn3" type="submit">Login</button>
+        </Wrapper2>
         </Form>
-       
+      </Wrapper> 
     </LoginForm>
   );
 };
