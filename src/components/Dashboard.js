@@ -9,6 +9,7 @@ import styled from "styled-components";
 const Container = styled.div`
   background: #311D3F;
   color: white;
+  min-height: 792px;
 `
 
 const Dashboard = (props) => {
