@@ -5,7 +5,9 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding-top: 100px;
 `;
+
 const RestaurantList = props => {
   const dynamicList = props.searchResults.length
     ? props.searchResults

@@ -9,6 +9,7 @@ import styled from "styled-components";
 const Container = styled.div`
   background: #311d3f;
   color: white;
+  min-height: 792px;
   display: flex;
   flex-direction: column;
   align-items: center;
