@@ -89,7 +89,7 @@ const AddForm = props => {
   if (isLoading) {
     return (
       <div className="loading">
-        <CircularProgress color="secondary" />
+        <CircularProgress color="secondary" size="100px" />
       </div>
     );
   } else {

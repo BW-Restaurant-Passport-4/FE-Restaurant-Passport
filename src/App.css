@@ -96,8 +96,8 @@ html {
 .addFormContainer form .stampedForm input {
   padding: 10px;
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 15px;
   margin-top: 15px;
 }
 
@@ -119,4 +119,24 @@ html {
 
 .addFormContainer form .formBtns button:hover {
   opacity: 0.7;
+}
+
+.userMessage {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* loading page styles */
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background: #311d3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
