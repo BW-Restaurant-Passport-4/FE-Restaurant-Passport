@@ -89,7 +89,7 @@ const AddForm = props => {
   if (isLoading) {
     return (
       <div className="loading">
-        <CircularProgress color="secondary" />
+        <CircularProgress color="secondary" size="100px" />
       </div>
     );
   } else {
@@ -103,66 +103,54 @@ const AddForm = props => {
         )}
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="addFormName">Name</label>
           <input
             type="text"
             name="restaurant_name"
-            id="addFormName"
             onChange={handleChange}
             value={formData.restaurant_name}
             placeholder="name"
             required
           />
 
-          <label htmlFor="addFormAddress">Address</label>
           <input
             type="text"
             name="restaurant_address"
-            id="addFormAddress"
             onChange={handleChange}
             value={formData.restaurant_address}
             placeholder="address"
             required
           />
 
-          <label htmlFor="addFormCity">City</label>
           <input
             type="text"
             name="restaurant_city"
-            id="addFormCity"
             onChange={handleChange}
             value={formData.restaurant_city}
             placeholder="city"
             required
           />
 
-          <label htmlFor="addFormZip">Zip Code</label>
           <input
             type="text"
             name="restaurant_zip"
-            id="addFormZip"
             onChange={handleChange}
             value={formData.restaurant_zip}
             placeholder="zip code"
             required
           />
 
-          <label htmlFor="addFormPhone">Phone #</label>
           <input
             type="tel"
             name="restaurant_phone_number"
-            id="addFormPhone"
             onChange={handleChange}
             value={formData.restaurant_phone_number}
             placeholder="phone number"
             required
           />
 
-          <label htmlFor="addFormWebsite">Website</label>
           <input
             type="text"
             name="restaurant_website"
-            id="addFormWebsite"
             onChange={handleChange}
             value={formData.restaurant_website}
             placeholder="url"
@@ -187,11 +175,9 @@ const AddForm = props => {
             </select>
           </div>
 
-          <label htmlFor="addFormNotes">Notes</label>
           <input
             type="textarea"
             name="restaurant_notes"
-            id="addFormNotes"
             onChange={handleChange}
             value={formData.restaurant_notes}
             placeholder="notes"
