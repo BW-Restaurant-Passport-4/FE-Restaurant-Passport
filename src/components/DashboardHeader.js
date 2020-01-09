@@ -9,11 +9,13 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 85px;
   position: sticky;
   top: 0;
   width: 100%;
   h2 {
-    margin-left: 10px;
+    margin-left: 15px;
+    font-size: 3rem;
   }
 `;
 
@@ -23,8 +25,8 @@ const Btn = styled.button`
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: white;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: 20px;
+  margin-left: 10px;
   padding: 11px 10px;
 `;
 

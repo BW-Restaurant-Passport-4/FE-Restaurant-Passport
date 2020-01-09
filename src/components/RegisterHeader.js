@@ -22,7 +22,7 @@ const Header = styled.div`
         border: none;
         border-radius: 10px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
-        margin-right: 5px;
+        margin-right: 20px;
         padding: 11px 20px;
         color: white;
     }

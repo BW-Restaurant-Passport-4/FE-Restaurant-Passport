@@ -100,8 +100,8 @@ const Register = () => {
           <Field className={input.root} type="text" name="email" label="Email" variant="outlined" component={TextField} />
           <Field className={input.root} type="password" name="password" label="Password" variant="outlined" component={TextField} />
           <Field className={input.root} type="text" name="city" label="City" variant="outlined" component={TextField} />
+          <button type="submit">Submit</button>
         </Form>
-        <button type="submit">Submit</button>
       </FormContainer>
     </Container>
   );
