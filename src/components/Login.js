@@ -85,7 +85,6 @@ color: white;
 `
 
 
-
 const Login = ({ values, errors, touched, status }) => {
   return (
    <LoginForm>    
@@ -95,7 +94,8 @@ const Login = ({ values, errors, touched, status }) => {
         <Wrapper2>
          <label className="usr" htmlFor="username">
           Username
-          <Field className="field1"
+          <Field
+            className="field1"
             id="username"
             type="text"
             name="username"
@@ -107,7 +107,8 @@ const Login = ({ values, errors, touched, status }) => {
         </label>
         <label className="pw" htmlFor="password">
           Password
-          <Field className="field2"
+          <Field
+            className="field2"
             id="password"
             type="password"
             name="password"
@@ -138,12 +139,11 @@ const FormikForm = withFormik({
   }),
 
   handleSubmit(values, { props, setStatus, resetForm }) {
-    console.log("submitting", values);
     axiosWithAuth()
       .post("/auth/login", values)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("username", res.data.message);
+        localStorage.setItem("message", res.data.message);
         props.history.push("/dashboard");
       })
       .catch(err => {
