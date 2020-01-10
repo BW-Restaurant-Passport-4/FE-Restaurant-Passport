@@ -3,21 +3,21 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
-import LoginHeader from "./LoginHeader"
+import LoginHeader from "./LoginHeader";
 import { TextField } from "formik-material-ui";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
-      width: 250,
-    },
-  },
+      width: 250
+    }
+  }
 }));
 
 const Wrapper = styled.div`
-  background: #88304E;
+  background: #88304e;
   color: white;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   min-height: 803px;
-`
+`;
 
 const FormContainer = styled.div`
   background: #522546;
@@ -33,7 +33,15 @@ const FormContainer = styled.div`
   width: 30%;
   padding: 100px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
-  Form {
+
+  @media (max-width: 900px) {
+    width: 40%;
+  }
+
+  @media (max-width: 650px) {
+    width: 60%;
+  }
+  form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -47,37 +55,38 @@ const FormContainer = styled.div`
   }
 
   button {
-    background: #311D3F;
+    background: #311d3f;
     border: none;
     border-radius: 10px;
-    color: #FFF;
+    color: #fff;
     font-size: 2rem;
     margin-top: 10px;
     padding: 11px 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-`
+`;
 
 const inputStyles = makeStyles(() => ({
   root: {
-    '& label.Mui-focused': {
-      color: '#FFF',
+    "& label.Mui-focused": {
+      color: "#FFF"
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
         border: "2px solid",
         borderColor: "#FFF",
-        boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+        boxShadow:
+          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
       },
-      '&:hover fieldset': {
+      "&:hover fieldset": {
         borderColor: "#311D3F"
       },
-      '&.Mui-focused fieldset': {
-        borderColor: "#311D3F",
+      "&.Mui-focused fieldset": {
+        borderColor: "#311D3F"
       }
     }
   }
-}))
+}));
 
 const Login = () => {
   const spacing = useStyles();
@@ -88,14 +97,16 @@ const Login = () => {
       <FormContainer>
         <Form className={spacing.root}>
           <h2>Login</h2>
-          <Field className={input.root}
+          <Field
+            className={input.root}
             type="text"
             name="username"
             label="Username"
             variant="outlined"
             component={TextField}
           />
-          <Field className={input.root}
+          <Field
+            className={input.root}
             type="password"
             name="password"
             label="Password"
@@ -105,11 +116,10 @@ const Login = () => {
           <button type="submit">Login</button>
         </Form>
       </FormContainer>
-    </Wrapper >
+    </Wrapper>
   );
 };
 const FormikForm = withFormik({
-
   mapPropsToValues(props) {
     return {
       username: props.username || "",
@@ -133,8 +143,6 @@ const FormikForm = withFormik({
         console.log("Error", err);
       });
   }
-
-
 })(Login);
 
-export default (FormikForm);
+export default FormikForm;

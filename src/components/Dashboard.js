@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <DashboardHeader user={user} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="userMessage">{user}</div>
       {isLoading ? (
         <div className="loading">
