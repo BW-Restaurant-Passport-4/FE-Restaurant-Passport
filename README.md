@@ -4,4 +4,4 @@ Users can register an account and login to their personal restaurant passport da
 
 Front End built by Antoinette Jones, Patrick Replogle and Sean Birmingham. Back End built by Kyle Barnett.
 
-Deployed website can be found at: 
+Deployed website can be found at: https://fe-restaurant-passport-nazrqtqln.now.sh/
