@@ -9,7 +9,8 @@ import styled from "styled-components";
 const Container = styled.div`
   background: #311d3f;
   color: white;
-  min-height: 792px;
+  min-height: 100vh;
+  padding-top: 85px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,8 +47,7 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="userMessage">{user}</div>
+      <DashboardHeader user={user} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <RestaurantList
         restaurants={restaurantList}
         searchResults={searchResults}
