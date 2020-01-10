@@ -49,6 +49,11 @@ const FormContainer = styled.div`
     font-size: 2rem;
   }
 
+  input {
+    color: white;
+    font-size: 1.7rem;
+  }
+
   label {
     color: white;
     font-size: 1.5rem;
@@ -63,6 +68,10 @@ const FormContainer = styled.div`
     margin-top: 10px;
     padding: 11px 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    &:hover {
+      background: rgba(136,48,78);
+    }
   }
 `;
 

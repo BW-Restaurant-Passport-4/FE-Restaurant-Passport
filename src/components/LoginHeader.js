@@ -26,6 +26,10 @@ const Btn4 = styled.button`
     color: white;
     margin-right: 20px;
     padding: 11px 20px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(136,48,78);
+    }
   `
 const LoginHeader = props => {
 

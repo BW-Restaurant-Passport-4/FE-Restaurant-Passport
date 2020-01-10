@@ -25,6 +25,10 @@ const Header = styled.div`
         margin-right: 20px;
         padding: 11px 20px;
         color: white;
+        cursor: pointer;
+        &:hover {
+            background: rgba(136,48,78);
+        }
     }
 `
 const RegisterHeader = props => {
