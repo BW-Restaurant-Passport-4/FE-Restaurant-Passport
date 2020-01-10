@@ -175,17 +175,19 @@ const AddForm = props => {
             </select>
           </div>
 
-          <input
+          <textarea
             type="textarea"
             name="restaurant_notes"
             onChange={handleChange}
             value={formData.restaurant_notes}
             placeholder="notes"
             required
+            cols="30"
+            rows="5"
           />
 
           <div className="stampedForm">
-            <label htmlFor="addFormStamped">Have You Eaten here?</label>
+            <label htmlFor="addFormStamped">Eaten here?</label>
             <input
               type="checkbox"
               name="restaurant_stamped"
