@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 import LoginHeader from "./LoginHeader"
 import { TextField } from "formik-material-ui";
-import { makeStyles } from '@material-ui/core/styles';;
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -102,7 +102,7 @@ const Login = () => {
             variant="outlined"
             component={TextField}
           />
-          <button className="btn3" type="submit">Login</button>
+          <button type="submit">Login</button>
         </Form>
       </FormContainer>
     </Wrapper >

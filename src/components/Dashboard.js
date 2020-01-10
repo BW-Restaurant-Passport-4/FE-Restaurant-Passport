@@ -10,7 +10,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 const Container = styled.div`
   background: #311d3f;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 85px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +54,7 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <DashboardHeader user={user} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="userMessage">{user}</div>
       {isLoading ? (
         <div className="loading">

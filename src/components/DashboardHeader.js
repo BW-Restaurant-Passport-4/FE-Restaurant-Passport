@@ -13,6 +13,7 @@ const Nav = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 2;
   h2 {
     margin-left: 15px;
     font-size: 3rem;
@@ -45,6 +46,7 @@ const DashboardHeader = props => {
   return (
     <Nav>
       <h2>Restaurant Passport</h2>
+      <div className="userMessage">{props.user}</div>
       <div>
         <Searchbar
           type="text"
