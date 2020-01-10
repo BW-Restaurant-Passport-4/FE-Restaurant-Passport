@@ -53,6 +53,12 @@ const FormContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     font-size: 2rem;
+    color: white;
+  }
+
+  input {
+    color: white;
+    font-size: 1.7rem;
   }
 
   label {
@@ -69,6 +75,10 @@ const FormContainer = styled.div`
     margin-top: 10px;
     padding: 11px 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    &:hover {
+      background: rgba(136,48,78);
+    }
   }
 `;
 
@@ -170,7 +180,8 @@ const RegisterForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    password: Yup.string().required()
+    password: Yup.string().min(6, "Password must be 6 characters or longer").required(),
+    username: Yup.string().required()
   }),
   handleSubmit(values, { props }) {
     console.log("values", values);

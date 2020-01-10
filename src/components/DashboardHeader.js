@@ -16,7 +16,7 @@ const Nav = styled.nav`
   z-index: 2;
   h2 {
     margin-left: 15px;
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 `;
 
@@ -29,6 +29,11 @@ const Btn = styled.button`
   margin-right: 20px;
   margin-left: 10px;
   padding: 11px 10px;
+  cursor: pointer;
+  font-size: 1.7rem;
+  &:hover {
+    background: #311d3f;
+  }
 `;
 
 const Searchbar = styled.input`

@@ -39,6 +39,10 @@ const Welcome = styled.div`
     font-size: 56px;
     line-height: 76px;
     color: #FFFFFF;
+    cursor: pointer;
+    &:hover {
+      background: rgba(136,48,78);
+    }
   }
 `
 
