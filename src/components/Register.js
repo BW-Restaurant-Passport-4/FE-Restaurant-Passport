@@ -26,7 +26,7 @@ const Container = styled.div`
   justify-content: center;
   text-align: center;
   margin: 0 auto;
-  min-height: 803px;
+  min-height: 100vh;
   h2 {
     font-size: 3.5rem;
   }

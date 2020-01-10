@@ -61,12 +61,12 @@ const Dashboard = () => {
           <CircularProgress color="primary" size="100px" />
         </div>
       ) : (
-        <RestaurantList
-          restaurants={restaurantList}
-          searchResults={searchResults}
-          isLoading={isLoading}
-        />
-      )}
+          <RestaurantList
+            restaurants={restaurantList}
+            searchResults={searchResults}
+            isLoading={isLoading}
+          />
+        )}
     </Container>
   );
 };
