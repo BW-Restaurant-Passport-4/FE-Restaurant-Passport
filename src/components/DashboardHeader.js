@@ -46,7 +46,6 @@ const DashboardHeader = props => {
   return (
     <Nav>
       <h2>Restaurant Passport</h2>
-      <div className="userMessage">{props.user}</div>
       <div>
         <Searchbar
           type="text"

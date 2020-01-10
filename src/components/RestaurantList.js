@@ -7,7 +7,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 95%;
+  width: 100%;
 `;
 
 const RestaurantList = props => {

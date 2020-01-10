@@ -54,19 +54,19 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <DashboardHeader user={user} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="userMessage">{user}</div>
       {isLoading ? (
         <div className="loading">
           <CircularProgress color="primary" size="100px" />
         </div>
       ) : (
-        <RestaurantList
-          restaurants={restaurantList}
-          searchResults={searchResults}
-          isLoading={isLoading}
-        />
-      )}
+          <RestaurantList
+            restaurants={restaurantList}
+            searchResults={searchResults}
+            isLoading={isLoading}
+          />
+        )}
     </Container>
   );
 };

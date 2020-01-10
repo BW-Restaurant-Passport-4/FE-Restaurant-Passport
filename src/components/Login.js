@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  min-height: 803px;
+  min-height: 100vh;
 `
 
 const FormContainer = styled.div`

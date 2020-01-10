@@ -16,12 +16,19 @@ const useStyles = makeStyles(theme => ({
   card: {
     background: "#88304E",
     color: "#FFF",
-    width: 500,
+    width: "30%",
     margin: "25px auto",
-    padding: "10px",
-    fontSize: "2.5rem",
+    fontSize: "1.5rem",
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    zIndex: 1
+    zIndex: 1,
+    '@media (max-width:1000px)': {
+      fontSize: "2rem",
+      width: '80%'
+    },
+    '@media (max-width:600px)': {
+      fontSize: "2rem",
+      width: '80%'
+    },
   },
   button: {
     background: "#522546",
@@ -103,7 +110,7 @@ const RestaurantCard = props => {
       <Flex>
         <Button size="large" onClick={deleteRestaurant} className={cardStyle.button} variant="contained" startIcon={<DeleteIcon />}>Delete</Button>
         <Button size="large" onClick={handleEdit} className={cardStyle.button} variant="contained" startIcon={<EditIcon />}>Edit</Button>
-        {props.restaurant.restaurant_stamped ? (<CheckBoxIcon style={{ fill: "#52de97", fontSize: "60px" }} />) : (<CheckBoxOutlineBlankIcon style={{ fill: "#FFF", fontSize: "60px" }} />)}
+        {props.restaurant.restaurant_stamped ? (<CheckBoxIcon style={{ fill: "#52de97", fontSize: "50px" }} />) : (<CheckBoxOutlineBlankIcon style={{ fill: "#FFF", fontSize: "50px" }} />)}
       </Flex>
     </Card>
   );
