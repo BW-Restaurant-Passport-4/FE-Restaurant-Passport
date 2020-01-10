@@ -5,11 +5,12 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import RestaurantList from "./RestaurantList";
 import DashboardHeader from "./DashboardHeader";
 import styled from "styled-components";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Container = styled.div`
   background: #311d3f;
   color: white;
-  min-height: 792px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,17 +22,23 @@ const Dashboard = () => {
   const { user, setUser } = useContext(userContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const message = localStorage.getItem("message");
   setUser(message);
 
   useEffect(() => {
+    setIsLoading(true);
     axiosWithAuth()
       .get("/restaurants")
       .then(res => {
+        setIsLoading(false);
         setRestaurantList(res.data.reverse());
       })
-      .catch(err => console.log("Error fetching: ", err));
+      .catch(err => {
+        setIsLoading(false);
+        console.log("Error fetching: ", err);
+      });
   }, [setRestaurantList]);
 
   useEffect(() => {
@@ -48,10 +55,17 @@ const Dashboard = () => {
     <Container>
       <DashboardHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="userMessage">{user}</div>
-      <RestaurantList
-        restaurants={restaurantList}
-        searchResults={searchResults}
-      />
+      {isLoading ? (
+        <div className="loading">
+          <CircularProgress color="primary" size="100px" />
+        </div>
+      ) : (
+        <RestaurantList
+          restaurants={restaurantList}
+          searchResults={searchResults}
+          isLoading={isLoading}
+        />
+      )}
     </Container>
   );
 };

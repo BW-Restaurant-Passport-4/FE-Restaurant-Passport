@@ -10,7 +10,7 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   height: 85px;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   h2 {

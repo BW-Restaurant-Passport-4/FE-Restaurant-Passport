@@ -6,15 +6,9 @@ import Emoji from "./Emoji";
 import styled from "styled-components";
 
 const Card = styled.div`
-  background: #88304E;
+  background: #88304e;
   width: 30%;
-  margin: 10px auto;
-`
-
-
-
-
-
+`;
 
 const RestaurantCard = props => {
   const { setIsEditing, setItemToEdit, setRestaurantList } = useContext(
