@@ -3,7 +3,7 @@ import { passportContext } from "../contexts/passportContext";
 import { userContext } from "../contexts/userContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import RestaurantList from "./RestaurantList";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "./headers/DashboardHeader";
 import styled from "styled-components";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -61,12 +61,12 @@ const Dashboard = () => {
           <CircularProgress color="primary" size="100px" />
         </div>
       ) : (
-          <RestaurantList
-            restaurants={restaurantList}
-            searchResults={searchResults}
-            isLoading={isLoading}
-          />
-        )}
+        <RestaurantList
+          restaurants={restaurantList}
+          searchResults={searchResults}
+          isLoading={isLoading}
+        />
+      )}
     </Container>
   );
 };

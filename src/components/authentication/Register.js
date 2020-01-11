@@ -1,9 +1,10 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import * as Yup from "yup";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import RegisterHeader from "../headers/RegisterHeader";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import LoginHeader from "./LoginHeader";
 import { TextField } from "formik-material-ui";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -16,29 +17,34 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Wrapper = styled.div`
+const Container = styled.div`
   background: #88304e;
   color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   margin: 0 auto;
   min-height: 100vh;
-`
+  h2 {
+    font-size: 3.5rem;
+  }
+`;
 
 const FormContainer = styled.div`
   background: #522546;
   border-radius: 10px;
-  width: 30%;
-  padding: 100px;
+  color: white;
+  width: 25%;
+  padding: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     width: 40%;
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 700px) {
     width: 60%;
   }
   form {
@@ -47,6 +53,7 @@ const FormContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     font-size: 2rem;
+    color: white;
   }
 
   input {
@@ -63,14 +70,14 @@ const FormContainer = styled.div`
     background: #311d3f;
     border: none;
     border-radius: 10px;
-    color: #fff;
+    color: white;
     font-size: 2rem;
     margin-top: 10px;
     padding: 11px 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
     &:hover {
-      background: rgba(136,48,78);
+      background: rgba(136, 48, 78);
     }
   }
 `;
@@ -97,20 +104,44 @@ const inputStyles = makeStyles(() => ({
   }
 }));
 
-const Login = () => {
+const Register = () => {
   const spacing = useStyles();
   const input = inputStyles();
   return (
-    <Wrapper>
-      <LoginHeader />
+    <Container>
+      <RegisterHeader />
       <FormContainer>
         <Form className={spacing.root}>
-          <h2>Login</h2>
+          <h2>Register</h2>
+          <Field
+            className={input.root}
+            type="text"
+            name="first_name"
+            label="First Name"
+            variant="outlined"
+            component={TextField}
+          />
+          <Field
+            className={input.root}
+            type="text"
+            name="last_name"
+            label="Last Name"
+            variant="outlined"
+            component={TextField}
+          />
           <Field
             className={input.root}
             type="text"
             name="username"
             label="Username"
+            variant="outlined"
+            component={TextField}
+          />
+          <Field
+            className={input.root}
+            type="text"
+            name="email"
+            label="Email"
             variant="outlined"
             component={TextField}
           />
@@ -122,36 +153,50 @@ const Login = () => {
             variant="outlined"
             component={TextField}
           />
-          <button type="submit">Login</button>
+          <Field
+            className={input.root}
+            type="text"
+            name="city"
+            label="City"
+            variant="outlined"
+            component={TextField}
+          />
+          <button type="submit">Submit</button>
         </Form>
       </FormContainer>
-    </Wrapper>
+    </Container>
   );
 };
-const FormikForm = withFormik({
+
+const RegisterForm = withFormik({
   mapPropsToValues(props) {
     return {
       username: props.username || "",
-      password: props.password || ""
+      password: props.password || "",
+      first_name: props.first_name || "",
+      last_name: props.last_name || "",
+      city: props.city || "",
+      email: props.email || ""
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("username is mandatory"),
-    password: Yup.string().required("password is mandatory")
+    password: Yup.string()
+      .min(6, "Password must be 6 characters or longer")
+      .required(),
+    username: Yup.string().required()
   }),
+  handleSubmit(values, { props }) {
+    console.log("values", values);
 
-  handleSubmit(values, { props, setStatus, resetForm }) {
     axiosWithAuth()
-      .post("/auth/login", values)
-      .then(res => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("message", res.data.message);
-        props.history.push("/dashboard");
+      .post("/auth/register", values)
+      .then(() => {
+        props.history.push("/login");
       })
       .catch(err => {
-        console.log("Error", err);
+        console.log("error registering: ", err);
       });
   }
-})(Login);
+})(Register);
 
-export default FormikForm;
+export default withRouter(RegisterForm);
