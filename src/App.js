@@ -3,12 +3,12 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import WelcomePage from "./components/WelcomePage";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/authentication/Register";
+import Login from "./components/authentication/Login";
 import Dashboard from "./components/Dashboard";
 import AddForm from "./components/AddForm";
-import UserProvider from "./providers/UserProvider";
-import PassportProvider from "./providers/PassportProvider";
+import UserProvider from "./components/providers/UserProvider";
+import PassportProvider from "./components/providers/PassportProvider";
 
 function App() {
   return (

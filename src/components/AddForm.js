@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import { passportContext } from "../contexts/passportContext";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import AddFormHeader from "./AddFormHeader";
+import AddFormHeader from "./headers/AddFormHeader";
 
 const initialFormState = {
   restaurant_name: "",
